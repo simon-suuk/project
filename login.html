@@ -13,6 +13,9 @@
     <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/kitchen-sink.css">
     <link rel="icon" href="img/icon.png">
+	
+	<script src="js/jquery-1.12.1.js"></script>
+	<script src="login.js"></script>
   </head>
   <body>
     <div class="views">
@@ -35,7 +38,7 @@
 							<div class="item-inner"> 
 							  <div class="item-title floating-label">Your username</div>
 							  <div class="item-input">
-								<input type="text" placeholder=""/>
+								<input type="text" name="username" id="username" value="" placeholder=""/>
 							  </div>
 							</div>
 						  </div>
@@ -47,16 +50,16 @@
 							<div class="item-inner"> 
 							  <div class="item-title floating-label">Password</div>
 							  <div class="item-input">
-								<input type="password" placeholder=""/>
+								<input type="password" name="passwd" id="passwd" value="" placeholder=""/>
 							  </div>
 							</div>
 						  </div>
 						</li>
 					  </ul>
 					  
-					  <div class="content-block"><a href="index.html" class="button button-fill button-raised center external">Login</a></div>
+					  <div class="content-block"><a onclick="login()" class="button button-fill button-raised center external">Login</a></div>
 					
-					  <div class="content-block center">Dont have account?</div>
+					  <div align="center" class="content-block center">Dont have account?</div>
 						
 					  <div class="content-block"><a href="signup.html"  class="button button-raised center external">SignUp</a></div>
 					</div>
