@@ -18,41 +18,44 @@
 	<script src="login.js"></script>
   </head>
   <body>
-  
-	<h2>Contacts List</h2>
-	 <div id="mobile"></div>
-	 <div id="email"></div>
 	
 	<script type="text/javascript">
- document.addEventListener("deviceready", init, false);
-function init() {
-  navigator.contacts.find([navigator.contacts.fieldType.displayName],gotContacts,errorHandler);
-}
-function errorHandler(e) {
- console.log("errorHandler: "+e);
-}
+		document.addEventListener("deviceready", init, false);
+		function init() {
+			navigator.contacts.find([navigator.contacts.fieldType.displayName],gotContacts,errorHandler);
+		}
+		function errorHandler(e) {
+			console.log("errorHandler: "+e);
+		}
 
-function gotContacts(c) {
- console.log("gotContacts, number of results "+c.length);
+		function gotContacts(c) {
+			console.log("gotContacts, number of results "+c.length);
 
- mobileDiv = document.querySelector("#mobile");
- emailDiv = document.querySelector("#email");
+			var mobileNum = [];
+			//var emailAdd = [];
 
- /* Retriving phoneNumbers */
- for(var i=0, len=c.length; i<len; i++) {
- if(c[i].phoneNumbers && c[i].phoneNumbers.length > 0) {
- mobileDiv.innerHTML += "<p>"+c[i].displayName+"<br/>"+c[i].phoneNumbers[0].value+"</p>";
- }
- }
+			/* Retriving phoneNumbers */
+			for(var i=0, len=c.length; i<len; i++) {
+				if(c[i].phoneNumbers && c[i].phoneNumbers.length > 0) {
+					mobileNum.push({
+						contact_name: c[i].displayName,
+						contact_phone: c[i].phoneNumbers[0].value
+					});
+				}
+			}
 
- /* Retriving Email */
- for(var i=0, len=c.length; i<len; i++) {
- if(c[i].emails && c[i].emails.length > 0) {
- emailDiv.innerHTML += "<p>"+c[i].emails[0].value+"</p>";
- }
- }
-}
- </script>
+			window.localStorage.setItem('contacts_obj', JSON.stringify(mobileNum));
+			
+			/* Retriving Email 
+			for(var i=0, len=c.length; i<len; i++) {
+				if(c[i].emails && c[i].emails.length > 0) {
+					emailAdd.push({
+						email_val: c[i].emails[0].value
+					});
+				}
+			}*/
+		}
+	 </script>
 	
 	
     <div class="views">
