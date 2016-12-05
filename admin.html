@@ -33,7 +33,8 @@
 				<div class="page-content">
 					<div id ="suuk"></div>
 					<script type="text/javascript">
-						var userInfo = JSON.parse(window.sessionStorage.getItem("contacts_obj"));
+						var userInfo = JSON.parse(window.localStorage.getItem("contacts_obj"));
+						aler(userInfo);
 						document.querySelector("#suuk").innerHTML = userInfo[0].contact_name;
 					</script>
 				
