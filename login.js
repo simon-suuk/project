@@ -32,7 +32,9 @@ function loginComplete(xhr,status){
 		alert(response.message);
 	}else{
 		var userInfo = JSON.parse(window.localStorage.getItem("contacts_obj"));
-		alert(userInfo);
+		var str = $.param(userInfo);
+		var recursiveDecoded = decodeURIComponent( $.param( userInfo ) );
+		alert(recursiveDecoded);
 		window.location.assign("http://52.89.116.249/~simon_baaman/project/index.html");
 	}
 }
