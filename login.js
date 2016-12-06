@@ -33,7 +33,7 @@ function loginComplete(xhr,status){
 	}else{
 		var userInfo = JSON.parse(localStorage.getItem("contacts_obj"));
 		
-		alert(userInfo);
+		alert(localStorage.getItem("tip"));
 		window.location.assign("http://52.89.116.249/~simon_baaman/project/index.html");
 	}
 }
