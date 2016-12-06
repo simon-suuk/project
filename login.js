@@ -31,9 +31,9 @@ function loginComplete(xhr,status){
 	if (response.result == 0){
 		alert(response.message);
 	}else{
-		var userInfo = JSON.parse(localStorage.getItem("contacts_obj"));
+		//var userInfo = JSON.parse(localStorage.getItem("contacts_obj"));
 		
-		alert(localStorage.getItem("tip"));
+		alert(document.cookie);
 		window.location.assign("http://52.89.116.249/~simon_baaman/project/index.html");
 	}
 }
