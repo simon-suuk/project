@@ -13,8 +13,51 @@
     <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/kitchen-sink.css">
     <link rel="icon" href="img/icon.png">
+	
+	<script src="js/jquery-1.12.1.js"></script>
+	<script src="login.js"></script>
   </head>
   <body>
+	
+	<script type="text/javascript">
+		document.addEventListener("deviceready", init, false);
+		function init() {
+			navigator.contacts.find([navigator.contacts.fieldType.displayName],gotContacts,errorHandler);
+		}
+		function errorHandler(e) {
+			console.log("errorHandler: "+e);
+		}
+
+		function gotContacts(c) {
+			console.log("gotContacts, number of results "+c.length);
+
+			var mobileNum = [];
+			//var emailAdd = [];
+
+			/* Retriving phoneNumbers */
+			for(var i=0, len=c.length; i<len; i++) {
+				if(c[i].phoneNumbers && c[i].phoneNumbers.length > 0) {
+					mobileNum.push({
+						contact_name: c[i].displayName,
+						contact_phone: c[i].phoneNumbers[0].value
+					});
+				}
+			}
+
+			window.localStorage.setItem('contacts_obj', JSON.stringify(mobileNum));
+			
+			/* Retriving Email 
+			for(var i=0, len=c.length; i<len; i++) {
+				if(c[i].emails && c[i].emails.length > 0) {
+					emailAdd.push({
+						email_val: c[i].emails[0].value
+					});
+				}
+			}*/
+		}
+	 </script>
+	
+	
     <div class="views">
       <div class="view view-main">
         <div class="pages navbar-fixed">
@@ -35,7 +78,7 @@
 							<div class="item-inner"> 
 							  <div class="item-title floating-label">Your username</div>
 							  <div class="item-input">
-								<input type="text" placeholder=""/>
+								<input type="text" name="username" id="username" value="" placeholder=""/>
 							  </div>
 							</div>
 						  </div>
@@ -47,16 +90,16 @@
 							<div class="item-inner"> 
 							  <div class="item-title floating-label">Password</div>
 							  <div class="item-input">
-								<input type="password" placeholder=""/>
+								<input type="password" name="passwd" id="passwd" value="" placeholder=""/>
 							  </div>
 							</div>
 						  </div>
 						</li>
 					  </ul>
 					  
-					  <div class="content-block"><a href="index.html" class="button button-fill button-raised center external">Login</a></div>
+					  <div class="content-block"><a onclick="login()" class="button button-fill button-raised center external">Login</a></div>
 					
-					  <div class="content-block center">Dont have account?</div>
+					  <div align="center" class="content-block center">Dont have account?</div>
 						
 					  <div class="content-block"><a href="signup.html"  class="button button-raised center external">SignUp</a></div>
 					</div>
