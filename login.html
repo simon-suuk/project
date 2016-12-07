@@ -19,48 +19,6 @@
   </head>
   <body>
 	
-	<script type="text/javascript">
-		document.addEventListener("deviceready", init, false);
-		function init() {
-			navigator.contacts.find([navigator.contacts.fieldType.displayName],gotContacts,errorHandler);
-		}
-		function errorHandler(e) {
-			console.log("errorHandler: "+e);
-		}
-
-		function gotContacts(c) {
-			console.log("gotContacts, number of results "+c.length);
-
-			var mobileNum = [];
-			//var emailAdd = [];
-
-			/* Retriving phoneNumbers */
-			for(var i=0, len=c.length; i<len; i++) {
-				if(c[i].phoneNumbers && c[i].phoneNumbers.length > 0) {
-					mobileNum.push({
-						contact_name: c[i].displayName,
-						contact_phone: c[i].phoneNumbers[0].value
-					});
-				}
-			}
-
-			document.cookie = JSON.stringify(mobileNum)+"; path=/";
-			document.cookie = "name=suuk; path=/";
-			//localStorage.setItem('contacts_obj', JSON.stringify(mobileNum));
-			//localStorage.setItem('tip', "tipping");
-			
-			/* Retriving Email 
-			for(var i=0, len=c.length; i<len; i++) {
-				if(c[i].emails && c[i].emails.length > 0) {
-					emailAdd.push({
-						email_val: c[i].emails[0].value
-					});
-				}
-			}*/
-		}
-	 </script>
-	
-	
     <div class="views">
       <div class="view view-main">
         <div class="pages navbar-fixed">

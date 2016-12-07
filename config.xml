@@ -125,4 +125,5 @@
   <plugin name="phonegap-plugin-barcodescanner"  />
   <plugin name="cordova-plugin-geolocation"  />
   <plugin name="cordova-plugin-contacts"  />
+  <plugin name="cordova-sqlite-storage"  />
 </widget>
