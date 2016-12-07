@@ -31,58 +31,6 @@ function loginComplete(xhr,status){
 	if (response.result == 0){
 		alert(response.message);
 	}else{
-		
-		var myDB;
-		
-		document.addEventListener("deviceready", init, false);
-		function init() {
-			myDB = window.sqlitePlugin.openDatabase({name: "mySQLite.db", location: 'default'});
-			navigator.contacts.find([navigator.contacts.fieldType.displayName],gotContacts,errorHandler);
-		}
-		function errorHandler(e) {
-			console.log("errorHandler: "+e);
-		}
-		
-		//Insert New Data
-		function gotContacts(c) {
-			/* Retriving phoneNumbers */
-			for(var i=0, len=c.length; i<len; i++) {
-				if(c[i].phoneNumbers && c[i].phoneNumbers.length > 0) {
-					myDB.transaction(function(transaction) {
-					var executeQuery = "INSERT INTO user_contacts (contact_name, mobile_num) VALUES (?,?)";  
-
-					transaction.executeSql(executeQuery, [c[i].displayName,c[i].phoneNumbers[0].value]
-						, function(tx, result) {
-							 alert('Inserted');
-						},
-						function(error){
-							 alert('Error occurred'); 
-						});
-					});
-				}
-			}
-		}
-		
-		//Display Table Data
-		myDB.transaction(function(transaction) {
-		transaction.executeSql('SELECT * FROM user_contacts', [], function (tx, results) {
-		   var len = results.rows.length, i;
-		 
-		   for (i = 0; i < len; i++){
-			  alert(results.rows.item(i).contact_name+" "+results.rows.item(i).mobile_num);
-		   }
-		}, null);
-		});
-
-
-		/*myDB.transaction(function(transaction) {
-			var executeQuery = "DROP TABLE  IF EXISTS user_contacts";
-			transaction.executeSql(executeQuery, [],
-				function(tx, result) {alert('Table deleted successfully.');},
-				function(error){alert('Error occurred while droping the table.');}
-			);
-		});*/
-		
 		window.location.assign("http://52.89.116.249/~simon_baaman/project/index.html");
 	}
 }
