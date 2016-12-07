@@ -33,14 +33,14 @@ function addPlaceComplete(xhr,status){
 		
 		return;
 	}
-	
+	console.log(xhr.responseText);
 	var response = $.parseJSON(xhr.responseText);
 	
 	if (response.status != "OK"){
 		
 		alert(response.status);
 	}else{
-		alert(response);
+		alert(response.status);
 		window.location.assign("http://52.89.116.249/~simon_baaman/project/index.html");
 	}
 }
