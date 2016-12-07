@@ -29,10 +29,18 @@ if (isset($_REQUEST['place_lat'])) {
 	$place_type = $_REQUEST['place_type'];
 	$phone = $_REQUEST['phone'];
 	$address = $_REQUEST['address'];
+	
+	/*$place_name = "Ash Caf";
+	$place_lat = 5.77;
+	$place_lng = -0.2;
+	$website = "www.ashesi.edu.gh";
+	$place_type = "store";
+	$phone = "233247895684";
+	$address = "Street of heaven";*/
 
-	$jsonpost = '{
+	/*$jsonpost = '{
 		"location": {
-			"lat": $place_lat,
+			"lat": "$place_lat",
 			"lng": $place_lng
 		},
 		"accuracy": 50,
@@ -42,7 +50,21 @@ if (isset($_REQUEST['place_lat'])) {
 		"types": [$place_type], 
 		"website": $website, 
 		"language": "en-AU"
-	}';
+	}';*/
+	
+	$temp = array(
+		"location" => array("lat"=>$place_lat, "lng"=>$place_lng),
+		"accuracy"=>50,
+		"name"=>$place_name,
+		"phone_number"=>$phone, 
+		"address"=>$address, 
+		"types"=>"[$place_type]", 
+		"website"=>$website, 
+		"language"=>"en-AU"
+	);
+	
+	$jsonpost = json_encode($temp);
+	
 
 	$url = "https://maps.googleapis.com/maps/api/place/add/json?sensor=false&key=AIzaSyAIycY6g4-PkvM1xgwezfp5qnKLzKB3eXA";
 
