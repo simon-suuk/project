@@ -15,7 +15,7 @@
     <link rel="icon" href="img/icon.png">
 	
 	<script src="js/jquery-1.12.1.js"></script>
-	<script src="signup.js"></script>
+	<script src="add_place.js"></script>
   </head>
   <body>
     <div class="views">
@@ -31,13 +31,100 @@
 				</div>
 				
 				<div class="page-content">
-					<div id ="suuk"></div>
-					<script type="text/javascript">
-						//var userInfo = JSON.parse(window.localStorage.getItem("contacts_obj"));
-						//alert(localStorage.getItem("tip"));
-						alert(document.cookie);
-						//document.querySelector("#suuk").innerHTML = userInfo[0].contact_name;
-					</script>
+					<div class="list-block inputs-list">
+					  <ul>
+						<li>
+						  <div class="item-content">
+							<div class="item-media"><i class="icon icon-form-name"></i></div>
+							<div class="item-inner"> 
+							  <div class="item-title floating-label">Place name</div>
+							  <div class="item-input">
+								<input type="text" name="place_name" id="place_name" value="" placeholder=""/>
+							  </div>
+							</div>
+						  </div>
+						</li>
+						
+						<li>
+						  <div class="item-content">
+							<div class="item-media"><i class="icon icon-form-name"></i></div>
+							<div class="item-inner"> 
+							  <div class="item-title floating-label">Place Latitude</div>
+							  <div class="item-input">
+								<input type="tel" name="place_lat" id="place_lat" value="" placeholder=""/>
+							  </div>
+							</div>
+						  </div>
+						</li>
+						
+						<li>
+						  <div class="item-content">
+							<div class="item-media"><i class="icon icon-form-name"></i></div>
+							<div class="item-inner"> 
+							  <div class="item-title floating-label">Place Longitude</div>
+							  <div class="item-input">
+								<input type="tel" name="place_lng" id="place_lng" value="" placeholder=""/>
+							  </div>
+							</div>
+						  </div>
+						</li>
+						
+						<li>
+						  <div class="item-content">
+							<div class="item-media"><i class="icon icon-form-url"></i></div>
+							<div class="item-inner"> 
+							  <div class="item-title floating-label">URL</div>
+							  <div class="item-input">
+								<input type="url" name="website" id="website" value="" placeholder="URL"/>
+							  </div>
+							</div>
+						  </div>
+						</li>
+						
+						<li>
+						  <div class="item-content">
+							<div class="item-media"><i class="icon icon-form-gender"></i></div>
+							<div class="item-inner"> 
+							  <div class="item-title floating-label">Type</div>
+							  <div class="item-input">
+								<select name="place_type" id="place_type">
+								  <option value="store">Store</option>
+								  <option value="hospital">Clinic</option>
+								</select>
+							  </div>
+							</div>
+						  </div>
+						</li>
+						
+						<li>
+						  <div class="item-content">
+							<div class="item-media"><i class="icon icon-form-tel"></i></div>
+							<div class="item-inner"> 
+							  <div class="item-title floating-label">Phone</div>
+							  <div class="item-input">
+								<input type="tel" name="phone" id="phone" value="" placeholder=""/>
+							  </div>
+							</div>
+						  </div>
+						</li>
+						
+						<li>
+						  <div class="item-content">
+							<div class="item-media"><i class="icon icon-form-comment"></i></div>
+							<div class="item-inner"> 
+							  <div class="item-title floating-label">Address</div>
+							  <div class="item-input">
+								<textarea class="resizable" name="address" id="address" value=""></textarea>
+							  </div>
+							</div>
+						  </div>
+						</li>
+						
+					  </ul>
+					  
+					  <div class="content-block"><a onclick="addPlace()" class="button button-fill button-raised center external">Add New Place</a></div>
+					  
+					</div>
 				
 				</div>
 			</div>
