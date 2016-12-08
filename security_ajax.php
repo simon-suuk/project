@@ -69,7 +69,7 @@
 				echo '{"result":0, "message":"Error signing up"}';
 				return;
 			} else {
-				echo '{"result":1,"message": "You have successfully signed up"}'; 
+				echo '{"result":1,"message": "You have successfully signed up for Proximity"}'; 
 			}
 		}
 	}

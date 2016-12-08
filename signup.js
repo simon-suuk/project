@@ -1,3 +1,4 @@
+var glob_phone;
 
 //signUp
 function signUp(){
@@ -8,6 +9,8 @@ function signUp(){
 	var password = document.getElementById("passwd").value;
 	var email = document.getElementById("mail").value;
 	var phone = document.getElementById("phone").value;
+	
+	glob_phone = phone;
 	
 	/**This checks if all fields are filled*/
 	if(username=='' || password=='' || email=='' || phone==''){
@@ -28,21 +31,27 @@ function signUp(){
 */
 function signUpComplete(xhr,status){
 	if(status!="success"){
-		
+		alert(status);
 		return;
 	}
 	
 	var response = $.parseJSON(xhr.responseText);
 	
 	if (response.result == 0){
-		
 		alert(response.message);
 	}else{
 		
-		$.get("http://52.89.116.249/~simon_baaman/project/sms.php");
-		return false;
+		var ajaxurl = 'http://52.89.116.249/~simon_baaman/project/sms.php?phone='+glob_phone+'&message='+response.message;
+	
+		$.ajax(
+			ajaxurl,
+			{async:true, complete:smsComplete}	
+		);
 		
-		alert(response.message);
+		function smsComplete(xhr,status){
+			alert(response.message+". You will receive a confirmation sms shortly");
+		}
+		
 		window.location.assign("http://52.89.116.249/~simon_baaman/project/login.html");
 	}
 }

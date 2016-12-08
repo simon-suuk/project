@@ -1,5 +1,8 @@
 <?php
-	$temp = "http://52.89.116.249:13013/cgi-bin/sendsms?username=mobileapp&password=foobar&to=0262859757&from=suuk_carpool&smsc=smscAirtel&text=you%20have%20signed%20up%20for%20proximity";
+	$phone = $_REQUEST['phone'];
+	$message = $_REQUEST['message'];
+	
+	$temp = "http://52.89.116.249:13013/cgi-bin/sendsms?username=mobileapp&password=foobar&to="+$phone+"&from=Lookup&smsc=esstigo&text="+$message;
 	$url = filter_var ( $temp, FILTER_SANITIZE_URL);
 	
 	// Get cURL resource

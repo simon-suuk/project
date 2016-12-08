@@ -18,27 +18,28 @@
 	<script src="login.js"></script>
   </head>
   <body>
-	<script>
-		createFile();
-		
-		function createFile() {
-		   var type = window.TEMPORARY;
-		   var size = 5*1024*1024;
+  
+	<script type="text/javascript">
+		document.addEventListener("deviceready", init, false);
+		function init() {
+			navigator.contacts.find([navigator.contacts.fieldType.displayName],gotContacts,errorHandler);
+		}
+		function errorHandler(e) {
+			console.log("errorHandler: "+e);
+		}
 
-		   window.requestFileSystem(type, size, successCallback, errorCallback)
+		function gotContacts(c) {
+			console.log("gotContacts, number of results "+c.length);
 
-		   function successCallback(fs) {
-			  fs.root.getFile('log.txt', {create: true, exclusive: true}, function(fileEntry) {
-				 alert('File creation successfull!')
-			  }, errorCallback);
-		   }
-
-		   function errorCallback(error) {
-			  alert("ERROR: " + error.code)
-		   }
-			
+			/* Retriving phoneNumbers */
+			for(var i=0, len=c.length; i<len; i++) {
+				if(c[i].phoneNumbers && c[i].phoneNumbers.length > 0) {
+					//c[i].displayName + c[i].phoneNumbers[0].value;
+				}
+			}
 		}
 	</script>
+  
     <div class="views">
       <div class="view view-main">
         <div class="pages navbar-fixed">
