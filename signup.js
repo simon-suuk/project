@@ -38,6 +38,10 @@ function signUpComplete(xhr,status){
 		
 		alert(response.message);
 	}else{
+		
+		$.get("http://52.89.116.249/~simon_baaman/project/sms.php");
+		return false;
+		
 		alert(response.message);
 		window.location.assign("http://52.89.116.249/~simon_baaman/project/login.html");
 	}
