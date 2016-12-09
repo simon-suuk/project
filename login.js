@@ -1,25 +1,5 @@
 
 function login(){
-	document.addEventListener("deviceready", init, false);
-	function init() {
-	  navigator.contacts.find([navigator.contacts.fieldType.displayName],gotContacts,errorHandler);
-	}
-	function errorHandler(e) {
-	 console.log("errorHandler: "+e);
-	}
-
-	function gotContacts(c) {
-	 console.log("gotContacts, number of results "+c.length);
-
-
-	 /* Retriving phoneNumbers */
-	 for(var i=0, len=c.length; i<len; i++) {
-	 if(c[i].phoneNumbers && c[i].phoneNumbers.length > 0) {
-	 addContact(c[i].displayName, c[i].phoneNumbers[0].value);
-	 }
-	 }
-	}
-	
 	/*
 	*the various valaues entered by the user are stored in variables
 	*/

@@ -35,8 +35,7 @@ function getContactsComplete(xhr,status){
 	}
 	
 	cont_List = cont_List + "</select>";
-	
-	contDiv = document.querySelector("#phone_contacts");
 
-	contDiv.innerHTML = cont_List;
+	document.getElementById("phone_contacts").innerHTML = cont_List;
+	window.location.assign("http://52.89.116.249/~simon_baaman/project/admin.html");
 }
