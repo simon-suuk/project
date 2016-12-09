@@ -28,7 +28,7 @@ function getContacts(){
 */
 function getContactsComplete(xhr,status){
 	var response = $.parseJSON(xhr.responseText);
-	var cont_List = "<select id='sel_contact'>";
+	var cont_List = "<select name='sel_contact' id='sel_contact'>";
 	
 	for(i = 0; i < response.length; i++){
 		cont_List = cont_List + "<option value="+response[i].contact_num+">"+response[i].contact_name+"</option>";
@@ -37,5 +37,4 @@ function getContactsComplete(xhr,status){
 	cont_List = cont_List + "</select>";
 
 	document.getElementById("phone_contacts").innerHTML = cont_List;
-	window.location.assign("http://52.89.116.249/~simon_baaman/project/admin.html");
 }

@@ -1,36 +1,5 @@
 <?php
-	createDelete();
-	
-	function createDelete(){
-		// Create connection
-		$con=mysqli_connect("localhost","simon_baaman","2237f7e245302fb8","mobileweb__simon_baaman");
-		// Check connection
-		if (!$con) {
-		    die("Connection failed: " . mysqli_connect_error());
-		}
-		
-		$dsql = "DROP TABLE IF EXISTS `contacts`";
-		if (mysqli_query($con, $dsql)) {
-		    echo "Table MyGuests created successfully";
-		} else {
-		    echo "Error creating table: " . mysqli_error($con);
-		}
-		
-		// sql to create table
-		$sql = "CREATE TABLE contacts (
-		id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-		contact_name VARCHAR(50) NOT NULL,
-		contact_num VARCHAR(50) NOT NULL
-		)";
-
-		if (mysqli_query($con, $sql)) {
-		    echo "Table MyGuests created successfully";
-		} else {
-		    echo "Error creating table: " . mysqli_error($con);
-		}
-
-		mysqli_close($con);
-	}
+	//createDelete();
 
 	//get command
 	$cmd=$_REQUEST['cmd'];
@@ -56,7 +25,7 @@
 		// Check connection
 		if (mysqli_connect_errno())
 		{
-			echo "Failed to connect to MySQL: " . mysqli_connect_error();
+			
 		}
 
 		$sql="SELECT contact_name, contact_num FROM contacts";
@@ -82,19 +51,50 @@
 		$conn = new mysqli("localhost","simon_baaman","2237f7e245302fb8","mobileweb__simon_baaman");
 		// Check connection
 		if ($conn->connect_error) {
-		    die("Connection failed: " . $conn->connect_error);
+		    
 		}
 
-		echo $sql = "INSERT INTO contacts SET
+		$sql = "INSERT INTO contacts SET
 					contact_name = '$contact_name',
 					contact_num = '$contact_num' ";
 
 		if ($conn->query($sql) === TRUE) {
-		    echo "New record created successfully";
+		   
 		} else {
-		    echo "Error: " . $sql . "<br>" . $conn->error;
+		   
 		}
 
 		$conn->close();
+	}
+	
+	
+	function createDelete(){
+		// Create connection
+		$con=mysqli_connect("localhost","simon_baaman","2237f7e245302fb8","mobileweb__simon_baaman");
+		
+		
+		$dsql = "DROP TABLE IF EXISTS `contacts`";
+		if (mysqli_query($con, $dsql)) {
+		    
+		} else {
+		    
+		}
+		
+		// sql to create table
+		$sql = "CREATE TABLE contacts (
+		id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+		contact_name VARCHAR(50) NOT NULL,
+		contact_num VARCHAR(50) NOT NULL
+		)";
+
+		if (mysqli_query($con, $sql)) {
+		    
+		} else {
+		   
+		}
+
+		mysqli_close($con);
+		
+		addContact();
 	}
 ?>
