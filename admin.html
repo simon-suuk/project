@@ -16,8 +16,9 @@
 	
 	<script src="js/jquery-1.12.1.js"></script>
 	<script src="add_place.js"></script>
+	<script src="contacts.js"></script>
   </head>
-  <body>
+  <body onload="getContacts()">
     <div class="views">
       <div class="view view-main">
         <div class="pages navbar-fixed">
@@ -29,6 +30,8 @@
 					<div class="center">Admin Portal</div>
 				  </div>
 				</div>
+				
+				<div id="phone_contacts"></div>
 				
 				<div class="page-content">
 					<div class="list-block inputs-list">

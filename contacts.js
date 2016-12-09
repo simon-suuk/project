@@ -1,34 +1,42 @@
-
-document.addEventListener("deviceready", init, false);
-function init() {
-  navigator.contacts.find([navigator.contacts.fieldType.displayName],gotContacts,errorHandler);
+function addContact(contact_name, contact_num){
+	var ajaxurl = 'http://52.89.116.249/~simon_baaman/project/add_contact.php?cmd=1&contact_name='+ contact_name + '&contact_num='+ contact_num;
+	
+	$.ajax(
+		ajaxurl,
+		{async:true, complete:addContactComplete}	
+	);
 }
-function errorHandler(e) {
- console.log("errorHandler: "+e);
+
+/**
+*callback function for sendSMS ajax call
+*/
+function addContactComplete(xhr,status){
+	
 }
 
-function gotContacts(c) {
- console.log("gotContacts, number of results "+c.length);
+function getContacts(){
+	var ajaxurl = 'http://52.89.116.249/~simon_baaman/project/add_contact.php?cmd=2';
+	
+	$.ajax(
+		ajaxurl,
+		{async:true, complete:getContactsComplete}	
+	);
+}
 
- mobileDiv = document.querySelector("#mobile");
- emailDiv = document.querySelector("#email");
-
- /* Retriving phoneNumbers */
-mobileDiv.innerHTML = "<select name='contacts' multiple>";
-for(var i=0, len=c.length; i<len; i++) {
-	if(c[i].phoneNumbers && c[i].phoneNumbers.length > 0) {
-		mobileDiv.innerHTML += "<option value='+c[i].phoneNumbers[0].value+'>c[i].displayName</option>";
+/**
+*callback function for sendSMS ajax call
+*/
+function getContactsComplete(xhr,status){
+	var response = $.parseJSON(xhr.responseText);
+	var cont_List = "<select id='sel_contact'>";
+	
+	for(i = 0; i < response.length; i++){
+		cont_List = cont_List + "<option value="+response[i].contact_num+">"+response[i].contact_name+"</option>";
 	}
-}
-mobileDiv.innerHTML += "</select>";
+	
+	cont_List = cont_List + "</select>";
+	
+	contDiv = document.querySelector("#phone_contacts");
 
- /* Retriving Email */
-emailDiv.innerHTML = "<select name='email' multiple>";
-for(var i=0, len=c.length; i<len; i++) {
-	if(c[i].emails && c[i].emails.length > 0) {
-		emailDiv.innerHTML += "<option value='+c[i].emails[0].value+'>c[i].emails[0].value</option>";
-	}
-}
-emailDiv.innerHTML += "</select>";
- 
+	contDiv.innerHTML = cont_List;
 }
