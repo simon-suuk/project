@@ -85,7 +85,7 @@
 		    die("Connection failed: " . $conn->connect_error);
 		}
 
-		$sql = "INSERT INTO contacts SET
+		echo $sql = "INSERT INTO contacts SET
 					contact_name = '$contact_name',
 					contact_num = '$contact_num' ";
 
