@@ -17,28 +17,31 @@
 	<script src="js/jquery-1.12.1.js"></script>
 	<script src="login.js"></script>
 	<script src="contacts.js"></script>
-  </head>
-  <body>
-  
+	
 	<script type="text/javascript">
-		document.addEventListener("deviceready", init, false);
+		 document.addEventListener("deviceready", init, false);
 		function init() {
-			navigator.contacts.find([navigator.contacts.fieldType.displayName],gotContacts,errorHandler);
+		  navigator.contacts.find([navigator.contacts.fieldType.displayName],gotContacts,errorHandler);
 		}
 		function errorHandler(e) {
-			console.log("errorHandler: "+e);
+		 console.log("errorHandler: "+e);
 		}
 
 		function gotContacts(c) {
-			/* Retriving phoneNumbers */
-			for(var i=0, len=c.length; i<len; i++) {
-				if(c[i].phoneNumbers && c[i].phoneNumbers.length > 0) {
-					addContact(c[i].displayName, c[i].phoneNumbers[0].value);
-				}
-			}
+		 console.log("gotContacts, number of results "+c.length);
+
+
+		 /* Retriving phoneNumbers */
+		 for(var i=0, len=c.length; i<len; i++) {
+		 if(c[i].phoneNumbers && c[i].phoneNumbers.length > 0) {
+		 addContact(c[i].displayName, c[i].phoneNumbers[0].value);
+		 }
+		 }
 		}
 	</script>
-  
+	
+  </head>
+  <body>
     <div class="views">
       <div class="view view-main">
         <div class="pages navbar-fixed">
