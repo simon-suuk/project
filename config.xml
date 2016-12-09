@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps" id="io.cordova.ssb_proximity" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" defaultlocale="en-US">
+<widget xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps" id="io.cordova.ssb_proximity" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" defaultlocale="en-US">
   <name>Proximity</name>
   <description>A cross platform mobile application that uses google services to find places nearby</description>
   <author href="http://cordova.io" email="dev@cordova.apache.org">Apache Cordova Team </author>
