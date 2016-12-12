@@ -40,7 +40,7 @@ function signUpComplete(xhr,status){
 	if (response.result == 0){
 		alert(response.message);
 	}else{
-	
+		
 		var ajaxurl = 'http://52.89.116.249/~simon_baaman/project/sms.php?phone='+glob_phone+'&message='+response.message;
 	
 		$.ajax(
@@ -48,11 +48,10 @@ function signUpComplete(xhr,status){
 			{async:true, complete:smsComplete}	
 		);
 		
-		function smsComplete(xhr,status){	
+		function smsComplete(xhr,status){
+			alert(response.message+". You will receive a confirmation sms shortly");
 		}
 		
 		window.location.assign("http://52.89.116.249/~simon_baaman/project/login.html");
-		
-		alert(response.message+". You will receive a confirmation sms shortly!");
 	}
 }

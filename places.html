@@ -33,37 +33,7 @@
       var infowindow;
 
       function initMap() {
-	  
-		/**
-		 * Get the value of a querystring
-		 * @param  {String} field The field to get the value of
-		 * @param  {String} url   The URL to get the value from (optional)
-		 * @return {String}       The field value
-		 */
-		var getQueryString = function ( field, url ) {
-			var href = url ? url : window.location.href;
-			var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
-			var string = reg.exec(href);
-			return string ? string[1] : null;
-		};
-	 
-		var srch_place_type_val = getQueryString('srch_place_type'); // returns 'chicken'
-		
-		var lat_val;
-		var lng_val;
-		
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(showPosition);
-		} else { 
-			alert('Geolocation is not supported by this browser.');
-		}
-
-		function showPosition(position) {
-			lat_val = (position.coords.latitude); 
-			lng_val = (position.coords.longitude);
-		}
-		
-        var pyrmont = {lat: lat_val, lng: lng_val};
+        var pyrmont = {lat: 5.7594701, lng: -0.2195168};
 
         map = new google.maps.Map(document.getElementById('map'), {
           center: pyrmont,
@@ -75,7 +45,7 @@
         service.nearbySearch({
           location: pyrmont,
           radius: 500,
-          type: [srch_place_type_val]
+          type: ['hospital']
         }, callback);
       }
 

@@ -2,14 +2,14 @@
 	$phone = $_REQUEST['phone'];
 	$message = $_REQUEST['message'];
 	
-	$baseurl = 'http://192.168.74.128:13013/cgi-bin/sendsms?';
+	$baseurl = 'http://52.89.116.249:13013/cgi-bin/sendsms?';
 		
 	$data =array(
-		'username' => 'tester',
+		'username' => 'mobileapp',
 		'password' => 'foobar',
 		'to' => $phone,
 		'from' => 'Proximity',
-		'smsc' => 'smscMTN',
+		'smsc' => 'esstigo',
 		'text' => $message
 	);
 	

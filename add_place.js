@@ -40,7 +40,7 @@ function addPlaceComplete(xhr,status){
 		
 		alert(response.status);
 	}else{
+		alert(response.status);
 		window.location.assign("http://52.89.116.249/~simon_baaman/project/index.html");
-		alert("Status: "response.status+ " New Place details: place_id=>"+ response.place_id+"; Place Scope=>"+response.scope+"; Reference=>"+response.reference);
 	}
 }
